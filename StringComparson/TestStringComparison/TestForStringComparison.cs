@@ -8,7 +8,7 @@ namespace TestStringComparison
     public class TestForStringComparison
     {
 
-        Compare obj;
+      
 
         [TestMethod]
 
