@@ -4,17 +4,20 @@
 
 namespace RemoveString
 {
-    class Program : IEnumerable
+    class Program
     {
         static void Main(string[] args)
         {
-            RemoveFirstLast("funbi");
+            RemoveFirstLast("Backspace");
+      
         }
-        static void RemoveFirstLast(string word)
+        static string RemoveFirstLast(string word)
         {
-           string firstLetter =  word.Substring(0,1);
+            string firstLetter = word.Remove(0,1);
+            string SecondLetter = firstLetter.Remove(firstLetter.Length - 1);
+            string finalString = SecondLetter;
 
-
+            return finalString;
         }
     }
 }
