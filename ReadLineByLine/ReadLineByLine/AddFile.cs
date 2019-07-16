@@ -1,60 +1,50 @@
 ﻿using System;
 using System.IO;
-
+using System.Collections;
 namespace ReadLineByLine
 {
     class AddFile
     {
-        private string text, text2, firstFileOutput, secondFileOutput;
-        internal string filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyComputer);
+        private string FirstFileOutput, SecondOutput;
+       
+        private string FirstFilePath, SecondFilePath,f1,f2;
+        ArrayList array = new ArrayList();
+
 
         public void GetText()
         {
-            Console.WriteLine("Add to first file");
-             text = Console.ReadLine();
-            writeToFirstFile(text);
 
-            Console.WriteLine("Add to second file");
-            text2 = Console.ReadLine();
-             writeToSecondFile(text2);
+            Console.WriteLine("Specify first txt file");
+             FirstFilePath = Console.ReadLine();
 
+             
 
-        }
+            Console.WriteLine("Specify second txt file path");
+            SecondFilePath = Console.ReadLine();
 
 
-        protected void writeToFirstFile(string textInput)
-        {
-            
-
-
-            using (StreamWriter writer = new StreamWriter(Path.Combine(filePath, "FirstFile.txt")))
-            {
-
-                writer.WriteLine(textInput);
-            }
-            
+            ReadFromFirstFile(FirstFilePath);
+            ReadFromSecondFile(SecondFilePath);
 
 
         }
 
 
-        protected void writeToSecondFile(string _textInput)
-        {
-
-            using (StreamWriter writer = new StreamWriter(Path.Combine(filePath, "Secondfile.txt")))
-            {
-                writer.WriteLine(_textInput);
-            }
-               
-        }
-        internal void ReadFromFirstFile()
+       
+        internal void ReadFromFirstFile(string filePath)
         {
            
             try
             {
-                using(StreamReader read = new StreamReader("FirstFile.txt"))
+                using(StreamReader read = new StreamReader(filePath))
                 {
-                    firstFileOutput =  read.ReadLine();
+                  
+                    while ((FirstFileOutput = read.ReadToEnd()) != null)
+                    {
+
+                        f1 = FirstFileOutput;
+
+                    }
                    
                 }
 
@@ -66,14 +56,20 @@ namespace ReadLineByLine
 
         }
 
-        internal void ReadFromSecondFile()
+
+        internal void ReadFromSecondFile(string filePath)
         {
+           
             try
             {
-                using (StreamReader read = new StreamReader("SecondFile.txt"))
+                using (StreamReader read = new StreamReader(filePath))
                 {
-                    secondFileOutput = read.ReadLine();
+                    while ((SecondOutput = read.ReadToEnd()) != null)
+                    {
+                        f2 = SecondOutput;
+                    }
                   
+
                 }
 
             }
@@ -81,13 +77,16 @@ namespace ReadLineByLine
             {
                 Console.WriteLine(ex.Message);
             }
+
         }
+
+
 
 
         public string Concantenate()
         {
-            return firstFileOutput + " " + secondFileOutput;
-        }
+            return f1 + " " + f2;
+         }
         
     }
 }

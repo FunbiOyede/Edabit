@@ -9,19 +9,11 @@ namespace ReadLineByLine
         {
 
             readFiles.GetText();
-            ReadFromFiles();
-            Console.WriteLine("Concantenated values are");
-            var concatValue = readFiles.Concantenate();
-            Console.WriteLine(concatValue);
+            Console.WriteLine(readFiles.Concantenate()); 
         }
 
 
-        public static void ReadFromFiles()
-        {
-            readFiles.ReadFromFirstFile();
-            readFiles.ReadFromSecondFile();
-            
-        }
+        
     }
 
 }
